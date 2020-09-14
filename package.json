@@ -1,0 +1,25 @@
+{
+  "name": "rating_app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "private": true,
+  "workspaces": [
+    "./packages/*"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "truffle compile"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/damarnez/rating_app.git"
+  },
+  "author": "damarnez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/damarnez/rating_app/issues"
+  },
+  "homepage": "https://github.com/damarnez/rating_app#readme",
+  "dependencies": {}
+}

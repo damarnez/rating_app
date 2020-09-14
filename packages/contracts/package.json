@@ -1,0 +1,35 @@
+{
+  "name": "contracts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "env-cmd -f .env.kovan truffle compile",
+    "migration:kovan": "env-cmd -f .env.kovan truffle migrate --network kovan"
+  },
+  "author": "damarnez",
+  "license": "ISC",
+  "dependencies": {
+    "@openzeppelin/contracts": "^3.2.0",
+    "env-cmd": "^10.1.0",
+    "ganache-cli": "^6.4.1",
+    "truffle": "^5.1.44",
+    "truffle-assertions": "^0.9.1",
+    "truffle-flattener": "^1.4.4",
+    "truffle-hdwallet-provider": "^1.0.17",
+    "truffle-security": "^1.7.1",
+    "web3": "^1.2.6",
+    "web3-utils": "^1.0.0-beta.55"
+  },
+  "devDependencies": {
+    "prettier": "^1.19.1",
+    "prettier-plugin-solidity": "^1.0.0-alpha.27",
+    "solhint": "^2.1.0",
+    "solhint-plugin-prettier": "0.0.3",
+    "solidity-coverage": "^0.7.5"
+  }
+}
