@@ -4,7 +4,6 @@ import contractsKovan from "@ratingapp/share/kovan/latest/contracts.json";
 
 const EnabledNetworks = {
   "42": "KOVAN",
-  "1": "MAINET",
 };
 
 const initialState = {
@@ -53,12 +52,13 @@ const reducers = (state, action) => {
       };
     }
     case "SET_NETWORK": {
+      console.log('ACTION: ', action)
       return {
         ...state,
         ...{
           networkId: action.data.networkId,
           network: parseNetwork(action.data.networkId),
-          positions: null,
+          networkError: false
         },
       };
     }
@@ -77,7 +77,8 @@ const reducers = (state, action) => {
           networkId: action.data.networkId,
           network: parseNetwork(action.data.networkId),
           address: action.data.address,
-          web3: action.data.web3
+          web3: action.data.web3,
+          networkError: false
         },
       };
     }
@@ -102,8 +103,22 @@ export default function Provider({ children }) {
 
   const setCheckBlockchain = useCallback((response) =>
     dispatch({ type: "SET_BLOCKCHAIN_CHECK", data: response }), []);
-  const setNetwork = useCallback((response) =>
-    dispatch({ type: "SET_NETWORK", response }), []);
+
+  const setNetwork = useCallback(({ networkId }) => {
+    if (Object.keys(EnabledNetworks).indexOf(networkId.toString()) > -1) {
+      return dispatch({
+        type: "SET_NETWORK",
+        data: { networkId },
+      });
+
+    } else {
+      return dispatch({
+        type: "SET_NETWORK_ERROR",
+        // @ts-ignore
+        data: true,
+      })
+    }
+  }, []);
   const setAddress = useCallback((response) => {
     window.localStorage.setItem("eth_address", response.address);
     dispatch({ type: "SET_ADDRESS", data: response })

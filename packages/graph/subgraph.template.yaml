@@ -6,7 +6,7 @@ dataSources:
     name: Rate
     network: kovan
     source:
-      address: "0xD816856E887A77ce0DfEC0e19f7d4bf044F8BEFA"
+      address: "{{Rate.address }}"
       abi: Rate
     mapping:
       kind: ethereum/events
@@ -14,6 +14,7 @@ dataSources:
       language: wasm/assemblyscript
       entities:
         - Rate
+        - User
       abis:
         - name: Rate
           file: ../share/kovan/latest/RateAbi.json

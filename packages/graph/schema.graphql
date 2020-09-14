@@ -5,3 +5,9 @@ type Rate @entity {
   rate: BigInt!
   timestamp: BigInt!
 }
+
+type User @entity {
+  id: ID!
+  address: Bytes!
+  timestamp: BigInt!
+}

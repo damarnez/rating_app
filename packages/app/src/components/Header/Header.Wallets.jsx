@@ -64,16 +64,14 @@ export default function TransitionsModal(props) {
       case "no_wallet":
         return (
           <div className={classes.paper}>
-            <p>
-              <h1>No wallet found</h1>Please install{" "}
-              <a
-                href="https://metamask.io/"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                <b>METAMASK</b>
-              </a>
-            </p>
+            <h1>No wallet found</h1>Please install{" "}
+            <a
+              href="https://metamask.io/"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <b>METAMASK</b>
+            </a>
           </div>
         );
       default:

@@ -1,6 +1,6 @@
 import { log } from "@graphprotocol/graph-ts";
 import { NewRate } from "../../generated/Rate/Rate";
-import { Rate } from "../../generated/schema";
+import { Rate, User } from "../../generated/schema";
 
 export function handleNewRate(event: NewRate): void {
   log.log(2, "- new rate -");
@@ -14,4 +14,11 @@ export function handleNewRate(event: NewRate): void {
   newRate.timestamp = event.params.timestamp;
 
   newRate.save();
+
+  let newUser = User.load(event.params.from.toHexString());
+  if (newUser == null) {
+    newUser.address = event.params.from;
+    newUser.timestamp = event.params.timestamp;
+    newUser.save();
+  }
 }

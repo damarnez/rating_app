@@ -28,6 +28,7 @@ export default function TransitionsModal(props) {
   const {
     store: { networkError },
   } = useBlockchainContext();
+
   return (
     <>
       <Modal
@@ -43,9 +44,7 @@ export default function TransitionsModal(props) {
       >
         <Fade in={networkError}>
           <div className={classes.paper}>
-            <p>
-              <h1>Ops!</h1>Please change your network to <b>KOVAN</b>{" "}
-            </p>
+            <h1>Ops!</h1>Please change your network to <b>KOVAN</b>{" "}
           </div>
         </Fade>
       </Modal>

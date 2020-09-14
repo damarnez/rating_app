@@ -4,23 +4,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "codegen:kovan": "env-cmd .env npm run codegen-kovan",
-    "codegen:mainnet": "env-cmd .env npm run codegen-mainnet",
-    "codegen-kovan": "graph codegen subgraph.kovan.yaml",
-    "codegen-mainnet": "graph codegen $MAINNET_MANIFEST",
-    "build:kovan": "env-cmd .env npm run build-kovan",
-    "build:mainnet": "env-cmd .env npm run build-mainnet",
-    "build-kovan": "graph build subgraph.kovan.yaml",
-    "build-mainnet": "graph build $MAINNET_MANIFEST",
-    "deploy:kovan": " env-cmd .env npm run deploy-kovan",
-    "deploy:mainnet": " env-cmd .env npm run deploy-mainnet",
+    "conf:kovan": "mustache ../share/kovan/latest/contracts.json subgraph.template.yaml > subgraph.yaml ",
+    "conf:mainnet": "mustache ../share/mainnet/latest/contracts.json subgraph.template.yaml > subgraph.yaml ",
+    "codegen:kovan": "npm run conf:kovan && env-cmd .env graph codegen",
+    "codegen:mainnet": "npm run conf:mainnet && env-cmd .env graph codegen",
+    "build:kovan": "npm run conf:kovan && env-cmd .env graph build",
+    "build:mainnet": "npm run conf:mainnet && env-cmd .env graph build",
+    "deploy:kovan": "npm run conf:kovan && env-cmd .env npm run deploy-kovan",
+    "deploy:mainnet": "npm run conf:mainnet && env-cmd .env npm run deploy-mainnet",
     "deploy-kovan": "graph deploy --debug --access-token $GRAPH_SECRET --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ $KOVAN_GRAPH $KOVAN_MANIFEST",
     "deploy-mainnet": "graph deploy --debug --access-token $GRAPH_SECRET --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ $MAINNET_GRAPH $MAINNET_MANIFEST"
   },
   "dependencies": {
     "@graphprotocol/graph-cli": "0.18.0",
     "@graphprotocol/graph-ts": "0.18.0",
-    "env-cmd": "8.0.2"
+    "env-cmd": "8.0.2",
+    "mustache": "^4.0.1"
   },
   "author": "damarnez",
   "license": "ISC"

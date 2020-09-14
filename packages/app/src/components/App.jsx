@@ -3,7 +3,8 @@ import useCheck from "../hooks/useCheck";
 import useWeb3 from "../hooks/useWeb3";
 
 import { useBlockchainContext } from "../contexts/blockchain";
-import Header from "../components/Header";
+import Header from "./Header";
+import Me from "./Me";
 import Fade from "@material-ui/core/Fade";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { makeStyles } from "@material-ui/core/styles";
@@ -99,7 +100,8 @@ function App() {
       <Header />
       {isLoading && <Loading />}
       {!isLoading && <div className={classes.container}></div>}
-      HOLA
+
+      <Me />
       <div ref={modalRefs} />
     </main>
   );
