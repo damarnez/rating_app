@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "truffle test",
     "compile": "env-cmd -f .env.kovan truffle compile",
     "migration:kovan": "env-cmd -f .env.kovan truffle migrate --network kovan"
   },
@@ -16,8 +16,7 @@
   "dependencies": {
     "@openzeppelin/contracts": "^3.2.0",
     "env-cmd": "^10.1.0",
-    "ganache-cli": "^6.4.1",
-    "truffle": "^5.1.44",
+    "truffle": "^5.1.9",
     "truffle-assertions": "^0.9.1",
     "truffle-flattener": "^1.4.4",
     "truffle-hdwallet-provider": "^1.0.17",

@@ -38,4 +38,13 @@ contract RateStorage is Ownable {
         Vote memory v = vote[to][from];
         return (v.rate, v.timestamp);
     }
+
+    function existRecord(address from, address to)
+        public
+        view
+        onlyAdmin
+        returns (bool)
+    {
+        return vote[to][from].timestamp != 0;
+    }
 }
