@@ -1,0 +1,23 @@
+specVersion: 0.0.2
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: Rate
+    network: kovan
+    source:
+      address: "0xD816856E887A77ce0DfEC0e19f7d4bf044F8BEFA"
+      abi: Rate
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - Rate
+      abis:
+        - name: Rate
+          file: ../share/kovan/latest/RateAbi.json
+      eventHandlers:
+        - event: NewRate(address,address,uint256,uint256)
+          handler: handleNewRate
+      file: ./src/mappings/rates.ts

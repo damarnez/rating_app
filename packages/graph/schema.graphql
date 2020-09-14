@@ -1,0 +1,7 @@
+type Rate @entity {
+  id: ID!
+  from: Bytes!
+  to: Bytes!
+  rate: BigInt!
+  timestamp: BigInt!
+}
