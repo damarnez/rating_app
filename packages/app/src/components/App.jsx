@@ -3,22 +3,20 @@ import useCheck from "../hooks/useCheck";
 import useWeb3 from "../hooks/useWeb3";
 
 import { useBlockchainContext } from "../contexts/blockchain";
+import { useAppContext } from "../contexts/app";
 import Header from "./Header";
 import Me from "./Me";
+import List from "./List";
+import FilterList from "./FilterList";
 import Fade from "@material-ui/core/Fade";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { makeStyles } from "@material-ui/core/styles";
-
-// const Market = React.lazy(() => import("./Market"));
-// const CreateItem = React.lazy(() => import("./CreateItem"));
-// const Detail = React.lazy(() => import("./Detail"));
-// const MyMarket = React.lazy(() => import("./MyMarket"));
-// const AboutUs = React.lazy(() => import("./AboutUs"));
 
 const useStyles = makeStyles((theme) => ({
   layout: {
     flex: 1,
     height: "100%",
+    marginTop: "100px",
   },
   loading: {
     display: "flex",
@@ -44,13 +42,17 @@ const useStyles = makeStyles((theme) => ({
 
 function App() {
   const [isLoading, setLoading] = useState(true);
-
+  const [open, setOpen] = useState(false);
+  const [filter, setFilter] = useState("");
   const classes = useStyles();
-  const modalRefs = useRef(null);
 
   const {
     store: { contracts, address, networkId, network },
   } = useBlockchainContext();
+  const {
+    store: { rates },
+    actions: { fetchRates },
+  } = useAppContext();
 
   useCheck();
 
@@ -69,13 +71,20 @@ function App() {
         console.error(e);
       }
     }
+
+    fetchRates();
   }, []);
 
   useEffect(() => {
-    if (contracts) {
+    if (contracts && rates) {
       setLoading(false);
     }
-  }, [network, contracts]);
+  }, [network, contracts, rates]);
+
+  const handleOpenModal = (address) => () => {
+    setFilter(address);
+    setOpen(!open);
+  };
 
   const Loading = () => (
     <main className={classes.layout}>
@@ -100,9 +109,13 @@ function App() {
       <Header />
       {isLoading && <Loading />}
       {!isLoading && <div className={classes.container}></div>}
-
-      <Me />
-      <div ref={modalRefs} />
+      {open && (
+        <FilterList address={filter} handleOpenModal={handleOpenModal} />
+      )}
+      <section>
+        <List rates={rates} handleOpenModal={handleOpenModal} />
+        <Me />
+      </section>
     </main>
   );
 }

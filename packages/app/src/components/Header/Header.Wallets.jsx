@@ -45,7 +45,6 @@ export default function TransitionsModal(props) {
   }, [check]);
 
   useEffect(() => {
-    console.log(" WEB3 ", web3, "address:", address);
     if (web3) {
       if (address) setUI("success");
       else setUI("enable");

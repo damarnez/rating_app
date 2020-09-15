@@ -4,7 +4,8 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./components/App";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-import BlockainContext from './contexts/blockchain'
+import BlockainContext from './contexts/blockchain';
+import AppContext from './contexts/app';
 
 const theme = createMuiTheme({
   typography: {
@@ -35,7 +36,7 @@ const theme = createMuiTheme({
 });
 
 ReactDOM.render(
-  <>
+  <AppContext>
     <BlockainContext>
       <CssBaseline />
       <ThemeProvider theme={theme}>
@@ -46,6 +47,6 @@ ReactDOM.render(
 
       </ThemeProvider>
     </BlockainContext>
-  </>,
+  </AppContext >,
   document.getElementById('root')
 );

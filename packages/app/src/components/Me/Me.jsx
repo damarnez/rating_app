@@ -10,7 +10,7 @@ import Grid from "@material-ui/core/Grid";
 const useStyles = makeStyles((theme) => ({
   root: {
     textAlign: "left",
-    paddingTop: "50px",
+
     paddingBottom: "0px",
     background: "transparent",
     height: "100%",
@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
   },
   grid: {
     display: "flex",
-    marginLeft: "50px",
+    paddingLeft: "50px",
     [theme.breakpoints.down("md")]: {
       marginLeft: "0px",
     },
@@ -75,7 +75,6 @@ const useStyles = makeStyles((theme) => ({
 
 const MeData = {
   name: "Daniel Martín Jiménez",
-  title: "Senior Software and Blockchain Developer",
   photo: "https://damarnez.me/img/yo.jpg",
   linkedin: "https://www.linkedin.com/in/damarnez/",
   webpage: "https://damarnez.me/",
