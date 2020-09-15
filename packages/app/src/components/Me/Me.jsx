@@ -27,10 +27,7 @@ const useStyles = makeStyles((theme) => ({
     width: "200px",
     height: "200px",
   },
-  buttons: {
-    float: "right",
-    height: "100%",
-  },
+
   items: {
     zIndex: 101,
     padding: "0px",
@@ -43,11 +40,6 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.primary.main,
   },
   subtitle: { fontSize: "20px" },
-  span: {
-    fontSize: "20px",
-    position: "relative",
-    top: "10px",
-  },
   grid: {
     display: "flex",
     paddingLeft: "50px",

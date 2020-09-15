@@ -25,9 +25,6 @@ const useStyles = makeStyles((theme) => ({
     heigth: "100%",
     minHeight: "80vh",
   },
-  button: {
-    margin: theme.spacing(2),
-  },
   placeholder: {
     minHeight: "100vh",
     marginTop: "45%",
@@ -81,7 +78,7 @@ function App() {
     }
   }, [network, contracts, rates]);
 
-  const handleOpenModal = (address) => () => {
+  const handleOpenCloseModal = (address) => () => {
     setFilter(address);
     setOpen(!open);
   };
@@ -110,10 +107,13 @@ function App() {
       {isLoading && <Loading />}
       {!isLoading && <div className={classes.container}></div>}
       {open && (
-        <FilterList address={filter} handleOpenModal={handleOpenModal} />
+        <FilterList
+          address={filter}
+          handleOpenCloseModal={handleOpenCloseModal}
+        />
       )}
       <section>
-        <List rates={rates} handleOpenModal={handleOpenModal} />
+        <List rates={rates} handleOpenCloseModal={handleOpenCloseModal} />
         <Me />
       </section>
     </main>

@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     margin: "20px",
   },
 }));
-const List = ({ rates, size, handleOpenModal }) => {
+const List = ({ rates, size, handleOpenCloseModal }) => {
   const classes = useStyles();
   return (
     <section className={classes.root}>
@@ -33,7 +33,11 @@ const List = ({ rates, size, handleOpenModal }) => {
             className={classes.card}
             elevation={3}
           >
-            <Rate data={rate} size={size} handleOpenModal={handleOpenModal} />
+            <Rate
+              data={rate}
+              size={size}
+              handleOpenCloseModal={handleOpenCloseModal}
+            />
           </Paper>
         ))}
     </section>

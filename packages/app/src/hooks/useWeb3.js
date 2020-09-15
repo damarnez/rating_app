@@ -38,7 +38,6 @@ const useWeb3 = () => {
       const accounts = await web3.eth.getAccounts();
       const net = await web3.eth.net.getId();
       if (accounts && accounts.length > 0) {
-        console.log("CONNECT", { web3, address: accounts[0], networkId: net })
         setNetworkData({ web3, address: accounts[0], networkId: net });
       }
 

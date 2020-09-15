@@ -1,0 +1,11 @@
+{
+  "packages": [
+    "packages/app",
+    "packages/contracts",
+    "packages/share",
+    "packages/graph"
+  ],
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "version": "independent"
+}

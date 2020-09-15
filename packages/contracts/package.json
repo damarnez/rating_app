@@ -1,5 +1,5 @@
 {
-  "name": "contracts",
+  "name": "@ratingapp/contracts",
   "version": "1.0.0",
   "description": "",
   "main": "truffle-config.js",
@@ -8,8 +8,8 @@
   },
   "scripts": {
     "test": "truffle test",
-    "compile": "env-cmd -f .env.kovan truffle compile",
-    "migration:kovan": "env-cmd -f .env.kovan truffle migrate --network kovan"
+    "compile": "env-cmd -f .env truffle compile",
+    "migration:kovan": "env-cmd -f .env truffle migrate --network kovan"
   },
   "author": "damarnez",
   "license": "ISC",

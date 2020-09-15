@@ -19,6 +19,10 @@ const useStyles = makeStyles((theme) => ({
       outline: "none",
     },
   },
+  star: {
+    margin: "10px",
+    fontSize: "50px",
+  },
   paper: {
     backgroundColor: "white",
     padding: theme.spacing(2, 4, 3),
@@ -28,11 +32,12 @@ const useStyles = makeStyles((theme) => ({
 export default function FilterListModal({
   address,
   open = true,
-  handleOpenModal,
+  handleOpenCloseModal,
 }) {
   const classes = useStyles();
   const [ui, setUI] = useState("list");
   const [value, setValue] = useState(0);
+
   const {
     store: { filterRates },
     actions: { fetchRatesByUser, fetchRates },
@@ -40,7 +45,9 @@ export default function FilterListModal({
   const {
     store: { address: account },
   } = useBlockchainContext();
+
   const wallet = useWallet();
+
   useEffect(() => {
     fetchRatesByUser(address);
   }, [address, fetchRatesByUser]);
@@ -89,13 +96,13 @@ export default function FilterListModal({
       case "processing":
         return (
           <div className={classes.paper}>
-            <p> Follow the instruction of the metamask to rate the user.</p>
+            <p>Check your MetaMask wallet to proceed.</p>
           </div>
         );
       case "success":
         return (
           <div className={classes.paper}>
-            <p> Thanks! for your rate.</p>
+            <p> Thanks! for rating.</p>
           </div>
         );
       case "error":
@@ -117,7 +124,7 @@ export default function FilterListModal({
         className={classes.modal}
         closeAfterTransition
         open={open}
-        onClose={handleOpenModal()}
+        onClose={handleOpenCloseModal()}
       >
         {getSteps()}
       </Modal>

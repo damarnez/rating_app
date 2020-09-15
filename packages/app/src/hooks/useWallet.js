@@ -65,7 +65,6 @@ const useWallet = () => {
           const currentAddress = address
             ? address
             : ethContracts[netId][name].address;
-          console.log('ETH CONTRACTS', ethContracts, ' Current Address:', currentAddress)
           if (
             instanceContracts[currentAddress] &&
             instanceContracts[currentAddress][name]

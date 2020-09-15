@@ -2,6 +2,7 @@ import React from "react";
 import Blockies from "react-blockies";
 import { makeStyles } from "@material-ui/core/styles";
 import Rating from "@material-ui/lab/Rating";
+import IconButton from "@material-ui/core/IconButton";
 
 const useStyles = makeStyles((theme) => ({
   star: {
@@ -24,15 +25,19 @@ const useStyles = makeStyles((theme) => ({
 const Rate = ({
   data: { from, to, rate, timestamp },
   size = 10,
-  handleOpenModal = () => () => {},
+  handleOpenCloseModal = () => () => {},
 }) => {
   const classes = useStyles();
   const date = new Date(timestamp * 1000);
   return (
     <>
-      <span onClick={handleOpenModal(to)}>
+      <IconButton
+        color="primary"
+        component="span"
+        onClick={handleOpenCloseModal(to)}
+      >
         <Blockies seed={to || "none"} className="identicon" scale={10} />
-      </span>
+      </IconButton>
       <Rating
         className={classes.star}
         name="disabled"
@@ -41,9 +46,13 @@ const Rate = ({
       />
       <div className={classes.byBox}>
         By :{" "}
-        <span onClick={handleOpenModal(from)}>
+        <IconButton
+          color="primary"
+          component="span"
+          onClick={handleOpenCloseModal(from)}
+        >
           <Blockies seed={from || "none"} className="identicon" />
-        </span>
+        </IconButton>
       </div>
       <p>
         The user <b>{from}</b> rate the user <b>{to}</b> with <b>{rate}</b> at{" "}

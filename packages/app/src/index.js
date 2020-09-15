@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from "react-router-dom";
 import App from "./components/App";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
@@ -40,11 +39,7 @@ ReactDOM.render(
     <BlockainContext>
       <CssBaseline />
       <ThemeProvider theme={theme}>
-
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-
+        <App />
       </ThemeProvider>
     </BlockainContext>
   </AppContext >,

@@ -20,38 +20,11 @@ const useStyles = makeStyles((theme) => ({
       outline: "none",
     },
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
   title: {
     flexGrow: 1,
   },
   header: {
     boxShadow: "none",
-  },
-
-  icon: {
-    marginRight: "5px",
-  },
-  menuTitle: {
-    fontSize: "20px",
-    padding: "16px",
-    fontWeight: "bold",
-    color: theme.palette.primary.main,
-  },
-  headerTitle: {
-    cursor: "pointer",
-    fontSize: "20px",
-    marginRight: "20px",
-    fontWeight: "bold",
-    color: theme.palette.primary.main,
-  },
-  wallet: {},
-  list: {
-    width: 250,
-  },
-  fullList: {
-    width: "auto",
   },
 }));
 
@@ -116,12 +89,7 @@ const Header = () => {
           <CheckLogin></CheckLogin>
         </Toolbar>
       </AppBar>
-      <Wallets
-        open={open}
-        handleOpen={handleOpen}
-        handleClose={handleClose}
-        className={classes.wallet}
-      />
+      <Wallets open={open} handleOpen={handleOpen} handleClose={handleClose} />
       <NetworkMessage />
     </>
   );
