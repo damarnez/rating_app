@@ -8,6 +8,7 @@ dataSources:
     source:
       address: "{{Rate.address }}"
       abi: Rate
+      startBlock: 20914636
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4

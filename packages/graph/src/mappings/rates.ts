@@ -7,7 +7,7 @@ export function handleNewRate(event: NewRate): void {
 
   let id_rate =
     event.params.from.toHexString() + "-" + event.params.to.toHexString();
-  let newRate = Rate.load(id_rate);
+  let newRate = new Rate(id_rate);
   newRate.from = event.params.from;
   newRate.to = event.params.to;
   newRate.rate = event.params.rate;
@@ -15,8 +15,10 @@ export function handleNewRate(event: NewRate): void {
 
   newRate.save();
 
-  let newUser = User.load(event.params.from.toHexString());
-  if (newUser == null) {
+  let existUser = User.load(event.params.from.toHexString());
+  if (existUser == null) {
+    log.log(2, "- new user -");
+    let newUser = new User(event.params.from.toHexString());
     newUser.address = event.params.from;
     newUser.timestamp = event.params.timestamp;
     newUser.save();

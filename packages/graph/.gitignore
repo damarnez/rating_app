@@ -4,3 +4,4 @@ generated/
 .DS_STORE
 .env
 subgraph.yaml
+yarn.lock
