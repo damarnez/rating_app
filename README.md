@@ -1,6 +1,15 @@
 # rating_app
 
-P2P Rating App
+P2P Rating App 
+
+**ONLY FOR TEST PURPOSES AND ONLY WORKS IN KOVAN**
+
+Install node modules:
+
+```
+yarn
+```
+
 
 # Share
 
@@ -15,12 +24,15 @@ The graph definition
 
 This folder needs this .env file to configure the project.
 
-`KOVAN_GRAPH=damarnez/rate-app GRAPH_SECRET=xxxxxxx`
+```
+KOVAN_GRAPH=damarnez/rate-app
+GRAPH_SECRET=xxxxxxx
+```
 command to exec:
-`
-yarn deploy:kovan
 
-`
+```
+yarn deploy:kovan
+```
 
 # Contracts
 
@@ -30,12 +42,17 @@ Solidity smart contracts
 
 This folder needs this .env file to configure the project.
 
-`PRIVATE_ADDRESS=0xXXXXXXXXXXXXXXXXXXXXXXXXXXX PRIVATE_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX INFURA_KEY=XXXXXXXXXXXXXXXXXXXXXX`
-command to exec:
-`
-yarn migration:kovan
+```
+PRIVATE_ADDRESS=0xXXXXXXXXXXXXXXXXXXXXXXXXXXX 
+PRIVATE_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX 
+INFURA_KEY=XXXXXXXXXXXXXXXXXXXXXX
+```
 
-`
+command to exec:
+
+```
+yarn migration:kovan
+```
 
 # App
 
@@ -43,7 +60,6 @@ Front end code in React.
 
 ## start
 
-`
+```
 yarn start
-
-`
+```
