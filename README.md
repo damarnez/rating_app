@@ -11,16 +11,16 @@ yarn
 ```
 
 
-# Share
+## @ratingapp/share
 
 This folder contains the deployment address of the contract and the abi nefinition.
 The `contracts` workspace update the definition in each deployment, and the `graph` and `app` workspace read the information.
 
-# Graph
+## @ratingapp/graph
 
 The graph definition
 
-## deploy to kovan
+### deploy to kovan
 
 This folder needs this .env file to configure the project.
 
@@ -34,11 +34,11 @@ command to exec:
 yarn deploy:kovan
 ```
 
-# Contracts
+## @ratingapp/contracts
 
 Solidity smart contracts
 
-## deploy to kovan
+### deploy to kovan
 
 This folder needs this .env file to configure the project.
 
@@ -54,11 +54,11 @@ command to exec:
 yarn migration:kovan
 ```
 
-# App
+## app
 
 Front end code in React.
 
-## start
+### start
 
 ```
 yarn start
