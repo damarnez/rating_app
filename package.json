@@ -8,7 +8,7 @@
     "./packages/*"
   ],
   "scripts": {
-    "start": "npx lerna run --scope 'app' start ",
+    "start": "npx lerna run --scope '@ratingapp/app' start ",
     "migration:kovan": "npx lerna run --stream --scope '@ratingapp/contracts' migration:kovan ",
     "deploy:kovan": "npx lerna run --stream --scope '@ratingapp/graph' deploy:kovan "
   },
