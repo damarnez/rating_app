@@ -54,7 +54,7 @@ command to exec:
 yarn migration:kovan
 ```
 
-## app
+## @ratingapp/app
 
 Front end code in React.
 
