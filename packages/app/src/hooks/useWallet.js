@@ -7,12 +7,10 @@ import { parseNetwork } from "../utils";
 const useWallet = () => {
   const {
     store: {
-
       contracts: ethContracts,
       instances: instanceContracts,
       networkId,
       web3,
-
     },
     actions: {
       setNewInstance,
@@ -67,7 +65,7 @@ const useWallet = () => {
           const currentAddress = address
             ? address
             : ethContracts[netId][name].address;
-
+          console.log('ETH CONTRACTS', ethContracts, ' Current Address:', currentAddress)
           if (
             instanceContracts[currentAddress] &&
             instanceContracts[currentAddress][name]

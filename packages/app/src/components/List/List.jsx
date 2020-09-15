@@ -29,7 +29,7 @@ const List = ({ rates, size, handleOpenModal }) => {
       {rates &&
         rates.map((rate) => (
           <Paper
-            key={`${rate.address}-${rate.rate}`}
+            key={`${rate.from}-${rate.timestamp}-${rate.rate}`}
             className={classes.card}
             elevation={3}
           >

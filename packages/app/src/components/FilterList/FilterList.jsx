@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
-import Backdrop from "@material-ui/core/Backdrop";
-import Fade from "@material-ui/core/Fade";
 import Blockies from "react-blockies";
 import { useAppContext } from "../../contexts/app";
 import Rating from "@material-ui/lab/Rating";
+import useWallet from "../../hooks/useWallet";
+import { useBlockchainContext } from "../../contexts/blockchain";
 import List from "../List";
 
 const useStyles = makeStyles((theme) => ({
@@ -35,13 +35,33 @@ export default function FilterListModal({
   const [value, setValue] = useState(0);
   const {
     store: { filterRates },
-    actions: { fetchRatesByUser },
+    actions: { fetchRatesByUser, fetchRates },
   } = useAppContext();
-
+  const {
+    store: { address: account },
+  } = useBlockchainContext();
+  const wallet = useWallet();
   useEffect(() => {
     fetchRatesByUser(address);
-  }, []);
+  }, [address, fetchRatesByUser]);
 
+  const handleVote = async (value) => {
+    try {
+      if (wallet) {
+        setUI("processing");
+        const rateContract = await wallet.load("Rate");
+        await rateContract.methods.vote(address, value).send({ from: account });
+        // Fetch data again
+        await fetchRates();
+        await fetchRatesByUser(address);
+        setUI("success");
+        setValue(0);
+      }
+    } catch (error) {
+      console.error("Error on interact with the blockchain :" + error.message);
+      setUI("error");
+    }
+  };
   const getSteps = () => {
     // eslint-disable-line
     switch (ui) {
@@ -58,15 +78,32 @@ export default function FilterListModal({
               name="rating-control"
               value={value}
               onChange={(event, newValue) => {
-                setValue(newValue);
+                handleVote(newValue);
               }}
+              disabled={value > 0}
             />
             <h2> List by user </h2>
             <List rates={filterRates[address]} size={5} />
           </div>
         );
       case "processing":
-        return <div className={classes.paper}>PROCESSING TRANSACTION</div>;
+        return (
+          <div className={classes.paper}>
+            <p> Follow the instruction of the metamask to rate the user.</p>
+          </div>
+        );
+      case "success":
+        return (
+          <div className={classes.paper}>
+            <p> Thanks! for your rate.</p>
+          </div>
+        );
+      case "error":
+        return (
+          <div className={classes.paper}>
+            <p> Something whent wrong :( </p>
+          </div>
+        );
       default:
       //Do Nothing
     }

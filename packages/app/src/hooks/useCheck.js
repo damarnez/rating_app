@@ -14,24 +14,21 @@ const useWallet = () => {
 
   useEffect(() => {
     if (web3) {
-      console.log('--------- START CHECK ');
-      web3.currentProvider.on('accountsChanged', (accounts) => {
-        console.log('NEW ADDRESS: ', accounts[0])
-        if (accounts[0] !== address) {
 
+      web3.currentProvider.on('accountsChanged', (accounts) => {
+        if (accounts[0] !== address) {
           setAddress({ address: accounts[0] })
         }
       });
 
       web3.currentProvider.on('chainChanged', async (chainId) => {
         if (networkId !== chainId) {
-          console.log('NEW CHAIN ID: ', chainId)
           const id = await web3.eth.net.getId();
           setNetwork({ networkId: id })
         }
       });
     }
-  }, [web3]);
+  }, [web3, address, networkId, setNetwork, setAddress]);
 
 
   return !!web3;

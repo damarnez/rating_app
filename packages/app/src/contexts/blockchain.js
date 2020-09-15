@@ -10,6 +10,7 @@ const initialState = {
   address: null,
   error: "",
   contracts: { 42: contractsKovan },
+  instances: {},
   web3: null,
   networkId: parseInt(process.env.REACT_APP_DEFAULT_NETWORK_ID || "1", 10),
   network: parseNetwork(

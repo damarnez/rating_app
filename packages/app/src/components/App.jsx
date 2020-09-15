@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import useCheck from "../hooks/useCheck";
 import useWeb3 from "../hooks/useWeb3";
 
@@ -47,7 +47,7 @@ function App() {
   const classes = useStyles();
 
   const {
-    store: { contracts, address, networkId, network },
+    store: { contracts, address, network },
   } = useBlockchainContext();
   const {
     store: { rates },
@@ -73,7 +73,7 @@ function App() {
     }
 
     fetchRates();
-  }, []);
+  }, [address, connect, fetchRates]);
 
   useEffect(() => {
     if (contracts && rates) {

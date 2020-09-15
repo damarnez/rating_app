@@ -22,11 +22,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Rate = ({
-  data: { from, to, rate },
+  data: { from, to, rate, timestamp },
   size = 10,
   handleOpenModal = () => () => {},
 }) => {
   const classes = useStyles();
+  const date = new Date(timestamp * 1000);
   return (
     <>
       <span onClick={handleOpenModal(to)}>
@@ -45,7 +46,8 @@ const Rate = ({
         </span>
       </div>
       <p>
-        The user <b>{from}</b> rate the user <b>{to}</b> with <b>{rate}</b>
+        The user <b>{from}</b> rate the user <b>{to}</b> with <b>{rate}</b> at{" "}
+        {date.toISOString()}
       </p>
     </>
   );
