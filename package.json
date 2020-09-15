@@ -10,7 +10,7 @@
   "scripts": {
     "start": "npx lerna run --scope 'app' start ",
     "migration:kovan": "npx lerna run --stream --scope '@ratingapp/contracts' migration:kovan ",
-    "deploy:kovan": "npx lerna run --stream --scope '@ratingapp/graph' migration:kovan "
+    "deploy:kovan": "npx lerna run --stream --scope '@ratingapp/graph' deploy:kovan "
   },
   "repository": {
     "type": "git",
